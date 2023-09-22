@@ -10,6 +10,7 @@
 #include <time.h>
 #include <string.h>
 #define KEY(n) (n ? n->key : -1) 
+#define MAX_NODE 10
 
 typedef struct Node {
     int key;
@@ -86,12 +87,57 @@ void output(Node *root) {
     return ;
 }
 
+Node *deserialize(char *buff, int n) {
+    Node **s = (Node **)malloc(sizeof(Node *) * MAX_NODE);
+    int top = -1, flag = 0, scode = 0; // scode为状态码
+    Node *p = NULL, *root = NULL; // p指向最新生成的节点
+    for (int i = 0; buff[i]; i++) {
+        switch (scode) {
+            case 0: {
+                if (buff[i] >= '0' && buff[i] <= '9') scode = 1;
+                else if (buff[i] == '(') scode = 2;
+                else if (buff[i] == ',') scode = 3;
+                else scode = 4;
+                i -= 1; // case 0为作任何处理，抵消外层循环i + 1
+            } break; //根据当前状态作任务分发
+            case 1 : {
+                int key = 0;
+                while (buff[i] <= '9' && buff[i] >= '0') {
+                    key = key * 10 + (buff[i] - '0');
+                    i += 1;
+                }
+                p = getNewNode(key);
+                if (top >= 0 && flag == 0) s[top]->lchild = p;
+                if (top >= 0 && flag == 1) s[top]->rchild = p;
+                i -= 1; // 抵消外层循环i + 1
+                scode = 0;
+            } break;
+            case 2 : {
+                s[++top] = p;
+                flag = 0;
+                scode = 0;
+            } break;
+            case 3 : {
+                flag = 1;
+                scode = 0;
+            } break;
+            case 4 : {
+                root = s[top];
+                top -= 1;
+                scode = 0;
+            } break;
+        } // 参考状态机的编码技巧
+    }
+    return root;
+}
+
 int main() {
     srand(time(0));
-    #define MAX_NODE 10
     Node *root = getRandomBinaryTree(MAX_NODE);
     serialize(root);
     output(root);
     printf("Buff[] ; %s\n", buff);
+    Node *new_root = deserialize(buff, len);
+    output(new_root);
     return 0;
 }
