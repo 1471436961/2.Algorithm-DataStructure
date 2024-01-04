@@ -72,6 +72,7 @@ int push(Queue *q, int val) {
 int pop(Queue *q) {
     if (empty(q)) return 0;
     q->head += 1;
+    if (q->head == q->size) q->head = 0;
     q->count -= 1;
     return 1;
 }

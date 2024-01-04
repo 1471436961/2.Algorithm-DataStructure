@@ -51,6 +51,7 @@ int insert(vector *v, int pos, int val) {
 }
 
 int erase(vector *v, int pos) {
+    if (v == NULL) return 0;
     if (pos < 0 || pos >= v->count) return 0;
     for (int i = pos + 1; i < v->count; i++) {
         v->data[i - 1] = v->data[i];

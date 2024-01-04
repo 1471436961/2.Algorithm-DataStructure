@@ -32,7 +32,7 @@ Node *insert(Node *head, int pos, int val) {
     node->next = p->next;
     p->next = node;
     return new_head.next;
-}
+} //有头链表
 
 void clear(Node *head) {
     if (head == NULL) return ;
