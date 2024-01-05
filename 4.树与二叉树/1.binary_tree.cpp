@@ -23,7 +23,7 @@ Node *getNewNode(int key) {
 
 Node* insert(Node *root, int key) {
     if (root == NULL) return getNewNode(key);
-    if (rand() % 2 == 1) root->lchild = insert(root->lchild, key); //当左子树为空时insert返回的是新节点的地址
+    if (rand() % 2) root->lchild = insert(root->lchild, key); //当左子树为空时insert返回的是新节点的地址
     else root->rchild = insert(root->rchild, key);
     return root;
 }

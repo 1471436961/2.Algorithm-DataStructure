@@ -69,7 +69,7 @@ char *char_code[MAX_CHAR_NUM] = {0};
 void extractHaffmanCode(Node *root, char buff[], int k) {
     buff[k] = 0;
     if (root->lchild == NULL && root->rchild == NULL) {
-        char_code[root->ch] = strdup(buff);
+        char_code[root->ch] = strdup(buff); //类似桶排序的思想，按字典序输出
         return ;
     }
     buff[k] = '0';

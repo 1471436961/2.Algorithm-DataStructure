@@ -88,7 +88,7 @@ void output(Node *root) {
 }
 
 Node *deserialize(char *buff, int n) {
-    Node **s = (Node **)malloc(sizeof(Node *) * MAX_NODE);
+    Node **s = (Node **)malloc(sizeof(Node *) * MAX_NODE); //用数组模拟栈
     int top = -1, flag = 0, scode = 0; // scode为状态码
     Node *p = NULL, *root = NULL; // p指向最新生成的节点
     for (int i = 0; buff[i]; i++) {
@@ -98,7 +98,7 @@ Node *deserialize(char *buff, int n) {
                 else if (buff[i] == '(') scode = 2;
                 else if (buff[i] == ',') scode = 3;
                 else scode = 4;
-                i -= 1; // case 0为作任何处理，抵消外层循环i + 1
+                i -= 1; // case 0未作任何处理，抵消外层循环i + 1
             } break; //根据当前状态作任务分发
             case 1 : {
                 int key = 0;
@@ -110,7 +110,7 @@ Node *deserialize(char *buff, int n) {
                 if (top >= 0 && flag == 0) s[top]->lchild = p;
                 if (top >= 0 && flag == 1) s[top]->rchild = p;
                 i -= 1; // 抵消外层循环i + 1
-                scode = 0;
+                scode = 0; //分发完任务后继续分发下一个任务
             } break;
             case 2 : {
                 s[++top] = p;
