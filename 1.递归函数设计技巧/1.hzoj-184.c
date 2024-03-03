@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 int peach_num(int n) {
-    if (n == 1) return 1;
+    if (n == 2) return 4;
     return (peach_num(n - 1) + 1) * 2;
 }
 
