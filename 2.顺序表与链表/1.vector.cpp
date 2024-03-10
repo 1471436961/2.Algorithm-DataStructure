@@ -26,6 +26,7 @@ void clear(vector *v) {
     if (v == NULL) return ;
     free(v->data);
     free(v);
+    v = NULL;
     return ;
 }
 

@@ -84,7 +84,7 @@ int main() {
     #define MAX_OP 7
     Node *head = NULL;
     for (int i = 0; i < MAX_OP; i++) {
-        int pos = rand() % (i + 1), val = rand() % 100, ret;
+        int pos = rand() % (i + 1), val = rand() % 100;
         printf("insert %d at %d to linklist\n", val, pos);
         head = insert(head, pos, val);
         output_linklist(head, 0);
