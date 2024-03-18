@@ -81,5 +81,6 @@ int main() {
     }
     bfs(root);
     dfs(root);
+    clear(root);
     return 0;
 }
