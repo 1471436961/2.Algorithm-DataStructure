@@ -25,7 +25,7 @@ void unguarded_insert_sort(int *arr, int l, int r) {
     int ind = l;
     for (int i = l + 1; i < r; i++) {
         if (arr[i] < arr[ind]) ind = i;
-    }
+    } // 增加了O(n)
     while(ind > l) {
         swap(arr[ind], arr[ind - 1]);
         ind -= 1;
@@ -33,10 +33,10 @@ void unguarded_insert_sort(int *arr, int l, int r) {
     for (int i = l + 1; i < r; i++) {
         int j = i;
         while (arr[j] < arr[j - 1]) {
-            swap(arr[j], arr[j - 1]) ; // 每执行一次逆序数减1
+            swap(arr[j], arr[j - 1]) ; // 初始逆序数O(n2)，每执行一次逆序数减1
             j -= 1;
         }
-    }
+    } // j > l的判断次数相当于交换次数，故减少了O(n2)
     return ;
 }
 
