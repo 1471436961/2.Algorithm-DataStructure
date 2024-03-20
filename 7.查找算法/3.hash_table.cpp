@@ -82,7 +82,7 @@ void expand(HashTable *h) {
     swapHashTable(h, new_h);
     clearHashTable(new_h);
     return ;
-} // 含n个元素的哈希表的扩容操作在其整个生命周期中时间复杂度约为n，则每个元素的均摊时间复杂度大约为1   
+} // 含n个元素的哈希表的扩容操作在其整个生命周期中时间复杂度约为n，则每个元素的均摊时间复杂度为O(1)   
 
 bool insert(HashTable *h, const char *s) {
     if (h->cnt >= h->size * 2) {

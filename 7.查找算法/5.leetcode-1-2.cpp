@@ -28,10 +28,9 @@ public:
         for (int i = 0; i < n; i++) {
             int j = binary_search(nums, ind, i + 1, target - nums[ind[i]]); 
             if (j == -1) continue;
-            ret[0] = ind[j];
-            ret[1] = ind[i];
+            ret[0] = ind[i];
+            ret[1] = ind[j];
         }
-        if (ret[0] > ret[1]) swap(ret[0], ret[1]);
         return ret;
     }
 };

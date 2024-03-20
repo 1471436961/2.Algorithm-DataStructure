@@ -13,8 +13,8 @@ public:
         vector<int> ret(2);
         for (int i = 0, I = nums.size(); i < I; i++) {
             if (h.find(target - nums[i]) != h.end()) {
-                ret[0] = h[target - nums[i]];
-                ret[1] = i;
+                ret[0] = i;
+                ret[1] = h[target - nums[i]];
                 break;
             }
             // h.find找到了返回一个迭代器，找不到返回h.end
