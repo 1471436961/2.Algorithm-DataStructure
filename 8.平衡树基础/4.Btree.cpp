@@ -99,7 +99,7 @@ Node *insert(Node *root, int key) {
         root = insert_maintain(p, root, 0);
     }
     return root;
-}
+} // 根结点性质与其他结点不同，故须封装一层处理
 
 void erase_pos(Node *root, int pos) {
     for (int i = pos + 1; i < root->n; i++) {
@@ -201,7 +201,7 @@ Node *erase(Node *root, int key) {
         root = temp;
     }
     return root;
-}
+} // 根结点性质与其他结点不同，故须封装一层处理
 
 void clear(Node *root) {
     if (root == NULL) return ;

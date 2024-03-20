@@ -116,26 +116,29 @@ Node *erase_maintain(Node *root) {
         }
         C(root) = BLACK;
         return root;
-    }
+    } // 情况4
+    // brother : black
     if ((C(L(root)) == DBLACK && !has_red_node(R(root))) 
         || (C(R(root)) == DBLACK && !has_red_node(L(root)))) {
         C(root) += 1;
         C(R(root)) -= 1;
         C(L(root)) -= 1;
         return root;
-    }
+    } // 情况1
     if (C(R(root)) == DBLACK) {
         C(R(root)) = BLACK;
         if (C(L(L(root))) != RED) {
             L(root) = left_rorate(L(root));
-        }
+        } // 情况3
+        // 情况2
         C(L(root)) = C(root);
         root = right_rorate(root);
     } else {
         C(L(root)) = BLACK;
         if (C(R(R(root))) != RED) {
             R(root) = right_rorate(R(root));
-        }
+        } // 情况3
+        // 情况2
         C(R(root)) = C(root);
         root = left_rorate(root);
     }
