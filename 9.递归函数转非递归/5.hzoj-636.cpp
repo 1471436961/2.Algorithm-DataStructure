@@ -24,7 +24,7 @@ int main() {
         g[x].push_back(y);
     }
     queue<int> q;
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i <= n; i++) {
         if (indeg[i]) continue;
         q.push(i);
         ans[i] = 1;

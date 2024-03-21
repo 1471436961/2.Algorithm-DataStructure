@@ -61,7 +61,7 @@ void non_merge_sort(int *arr, int l, int r) {
         if (rr - mid >= 2) {
             d_arr.push_back(Data(mid, rr));
         }
-    }
+    } // 拆解拓扑序
     for (int i = d_arr.size() - 1; i >= 0; i--) {
         merge_sort_once(arr, d_arr[i].l, d_arr[i].r);
     }
