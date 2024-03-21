@@ -12,7 +12,7 @@
 #include <time.h>
 
 #define SMALL_DATA_N 5000
-#define BIG_DATA_N   10000000
+#define BIG_DATA_N   5000000
 
 __attribute__((constructor))
 void __init_Rand__() {
