@@ -164,7 +164,7 @@ Node *__erase(Node *root, int key) {
         L(root) = __erase(L(root), K(temp));
     }
     return erase_maintain(root);
-}
+} // 将root结点当成父结点
 
 Node *erase(Node *root, int key) {
     root = __erase(root, key);
