@@ -111,7 +111,7 @@ void erase_pos(Node *root, int pos) {
 
 void right_rotate(Node *root, int pos) {
     for (int i = RCHILD(root, pos)->n + 1; i > 0; i--) {
-        RCHILD(root, pos)->key[i] = RCHILD(root, pos)->key[i - 1];
+        RCHILD(root, pos)->key[i]  = RCHILD(root, pos)->key[i - 1];
         RCHILD(root, pos)->next[i] = RCHILD(root, pos)->next[i - 1];
     }
     RCHILD(root, pos)->key[0] = root->key[pos];
@@ -129,7 +129,7 @@ void left_rotate(Node *root, int pos) {
     root->key[pos] = RCHILD(root, pos)->key[0];
     LAST_CHILD(LCHILD(root, pos)) = RCHILD(root, pos)->next[0];
     for (int i = 0; i < RCHILD(root, pos)->n; i++) {
-        RCHILD(root, pos)->key[i] = RCHILD(root, pos)->key[i + 1];
+        RCHILD(root, pos)->key[i]  = RCHILD(root, pos)->key[i + 1];
         RCHILD(root, pos)->next[i] = RCHILD(root, pos)->next[i + 1];
     }
     LAST_CHILD(RCHILD(root, pos)) = NULL;
