@@ -161,7 +161,7 @@ Node *__erase(Node *root, int key) {
         } 
         Node *temp = predecessor(root);
         K(root) = K(temp);
-        root->rchild = __erase(R(root), K(temp));
+        L(root) = __erase(L(root), K(temp));
     }
     return erase_maintain(root);
 }
