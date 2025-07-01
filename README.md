@@ -1,2 +1,2 @@
 # Algorithm and Data-Structure
-My solution to the course of algorithm and data-structure.
+My solution for the course of algorithm and data-structure.
