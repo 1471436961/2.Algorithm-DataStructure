@@ -10,8 +10,8 @@
 using namespace std;
 
 #define MAX_N 100000
-long long arr[MAX_N + 5];
-int l[MAX_N + 5], r[MAX_N + 5], st[MAX_N + 5] = {0};
+long long arr[MAX_N + 5] = {0};
+int l[MAX_N + 5] = {0}, r[MAX_N + 5] = {0}, st[MAX_N + 5] = {0};
 typedef pair<int, int> PII;
 set<PII> h;
 
@@ -31,7 +31,7 @@ int main() {
         if (1LL * arr[k] * a < 0) arr[++k] = a;
         else arr[k] += a;
     }
-    int cnt = 0, S = 0;
+    long long cnt = 0, S = 0;
     n = k;
     for (int i = 1; i <= n; i++) {
         if (arr[i] > 0) {
@@ -56,6 +56,6 @@ int main() {
             del(right);
         }
     }
-    cout << S << endl;
+    printf("%lld\n", S);
     return 0;
 }
